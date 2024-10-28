@@ -8,7 +8,7 @@ file_path = 'final_cleaned_data.csv'
 df = pd.read_csv(file_path)
 
 # Sampling 5% of the dataset for a more drastic reduction
-sampled_df = df.sample(frac=0.05, random_state=42)
+sampled_df = df.sample(frac=0.1, random_state=42)
 
 # Calculate mean latency and total bitrate if columns are available
 if all(x in sampled_df.columns for x in ['svr1', 'svr2', 'svr3', 'svr4']):
@@ -26,7 +26,7 @@ features_to_scale = ['mean_latency', 'total_bitrate']
 sampled_df[features_to_scale] = StandardScaler().fit_transform(sampled_df[features_to_scale])
 
 # Clustering with different linkage method
-num_clusters = 9
+num_clusters = 4
 kmeans = KMeans(n_clusters=num_clusters, random_state=42)
 dbscan = DBSCAN(eps=0.5, min_samples=5)
 agglo = AgglomerativeClustering(n_clusters=num_clusters, linkage='average')  # Changed linkage method

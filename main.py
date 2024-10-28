@@ -8,7 +8,8 @@ from sklearn.metrics import silhouette_score
 from joblib import dump, load
 
 # Load the cleaned CSV file
-file_path = 'clean_data.csv'
+file_path = 'final_cleaned_data.csv'
+# file_path = 'clean_data.csv'
 df = pd.read_csv(file_path)
 
 # 1. Check for missing values
@@ -59,14 +60,18 @@ df_ = df_unique[(df_unique['svr1'] > 0) & (df_unique['svr2'] > 0) &
                 (df_unique['upload_bitrate_mbits/sec'] > 0) &
                 (df_unique['download_bitrate_rx_mbits/sec'] > 0)]
 
-# Normalize the features for clustering
-scaler = StandardScaler()
-features_to_scale = ['mean_latency', 'total_bitrate', 'upload_bitrate_mbits/sec', 'download_bitrate_rx_mbits/sec']
-df[features_to_scale] = scaler.fit_transform(df[features_to_scale])
+# Import data
 
+# Normalize the features for clustering
+scaler = StandardScaler() 
+features_to_scale = ['mean_latency', 'total_bitrate', 'upload_bitrate_mbits/sec', 'download_bitrate_rx_mbits/sec', 'application_data']
+df[features_to_scale] = scaler.fit_transform(df[features_to_scale])
+print("DF Columns")
+print(df.columns)
 # 7. Apply PCA for visualization
 pca = PCA(n_components=2)
 df_pca = pca.fit_transform(df[features_to_scale])
+
 
 # Add PCA components to the dataframe for plotting
 df['pca1'] = df_pca[:, 0]
@@ -75,18 +80,15 @@ df['pca2'] = df_pca[:, 1]
 # 8. Apply KMeans Clustering
 num_clusters = 9  # You can adjust this number
 kmeans = KMeans(n_clusters=num_clusters, random_state=42, n_init=10)
-
 # Train the KMeans model
 df['cluster'] = kmeans.fit_predict(df[features_to_scale])
-
 # Save the trained model
 model_file = 'kmeans_model.joblib'
 dump(scaler, 'scaler.joblib')
 dump(pca, 'pca.joblib')
-
 dump(kmeans, model_file)
 print(f"KMeans model saved as {model_file}")
-
+df.to_csv("processed_with_clusters.csv",index=False)
 
 # Now, plotting the PCA of clusters
 plt.figure(figsize=(10, 8))
@@ -97,6 +99,17 @@ plt.ylabel('Principal Component 2')
 plt.colorbar(scatter, label='Cluster Label')
 plt.grid(True)
 plt.show()
+
+# Longitude and Latitude Plot
+plt.figure(figsize=(10, 8))
+plt.scatter(df['longitude'], df['latitude'], c=df['cluster'], cmap='viridis', alpha=0.6, s=50)
+plt.title('Longitude and Latitude Scatter Plot with KMeans Clusters')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.colorbar(label='Cluster Label')
+plt.grid(True)
+plt.show()
+
 # 10. Evaluate the Model
 # Inertia (lower is better)
 print(f"Inertia: {kmeans.inertia_}")
@@ -118,3 +131,5 @@ cluster_labels_sample = kmeans_sample.fit_predict(df_sample)
 # Calculate silhouette score on the sampled data
 silhouette_sample = silhouette_score(df_sample, cluster_labels_sample)
 print(f"Sampled Silhouette Score: {silhouette_sample}")
+
+

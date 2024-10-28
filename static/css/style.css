@@ -1,0 +1,275 @@
+html{
+    background-color: #242526;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+input, button {
+    margin: 10px 0;
+    padding: 10px;
+}
+button {
+    cursor: pointer;
+}
+a {
+    display: block;
+    margin: 10px 0;
+}
+
+#heading-container {
+    color: white;
+    display: grid;
+    place-items: center; /* Centers both horizontally and vertically */
+    height: 10vh;
+}
+
+#label-container {
+    color: white;
+    display: grid;
+    place-items: center; /* Centers both horizontally and vertically */
+    height: 5vh;
+}
+
+#index-form-container{
+    display: grid;
+    place-items: center; /* Centers both horizontally and vertically */
+    height: 10vh;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between grid items */
+    padding: 10px;
+}
+.grid-item {
+    padding: 6px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight:500;
+    color: black; /* White text for better readability */
+}
+
+.grid-item h3{
+    font-size: 18px;
+}
+
+.grid-item:nth-child(1) { background-color: #ffd9b3;  } /* Cluster 0  */
+.grid-item:nth-child(2) { background-color: #99ff99; } /* Cluster 1 */
+.grid-item:nth-child(3) { background-color: #ffd9b3; } /* Cluster 2 */
+.grid-item:nth-child(4) { background-color: #ffd9b3;  } /* Cluster 3  */
+.grid-item:nth-child(5) { background-color: #99ff99;  } /* Cluster 4 */
+.grid-item:nth-child(6) { background-color: #99ff99;  } /* Cluster 5  */
+.grid-item:nth-child(7) { background-color: #ffd9b3;  } /* Cluster 6 */
+.grid-item:nth-child(8) { background-color: #ffd9b3; } /* Cluster 7  */
+.grid-item:nth-child(9) { background-color: #ff9999; } /* Cluster 8  */
+
+
+/* Gradient legend styling */
+.legend-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.legend {
+    width: 80%;
+    height: 30px;
+    margin: 0 auto;
+    background: linear-gradient(to right, #ff6666 0%, #ff6666 33.33%, #ffd9b3 33.33%, #ffd9b3 66.66%, #99ff99 66.66%, #99ff99 100%);
+    border-radius: 5px;
+}
+
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.legend-label {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+h3 {
+margin: 0 0 10px;
+}
+
+/* Input field styling */
+input[type="text"] {
+    width: 17vw; /* Consistent width for input fields */
+    padding: 15px; /* Space inside input fields */
+    margin: 0 3px; /* Space between input fields */
+    border: 2px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    background-color: #f9f9f9; /* Light background for input fields */
+    font-size: 16px; /* Consistent font size */
+    color: #333; /* Dark text color for inputs */
+}
+
+/* Input field placeholder text */
+input::placeholder {
+    color: #8a8a8a; /* Light gray placeholder text */
+}
+
+/* Button styling */
+button {
+    padding: 15px 30px; /* Adequate padding for the button */
+    margin-left: 10px; /* Spacing between input and button */
+    background-color: #28a745; /* Green background for the button */
+    color: #fff; /* White text for button */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Larger font for button */
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.received-input-container {
+    padding: 20px;
+    border-radius: 8px;
+    color: black; /* White text for contrast */
+    background-color: white;
+    margin: 30px auto;
+    width: 50%; /* Make the results section narrower */
+    font-size: 18px;
+    text-align: center;
+}
+.received-input-container p{
+    text-align: left;
+    margin-left: 15vw;
+}
+/* General styling for the results container */
+.results-container {
+    padding: 20px;
+    border-radius: 8px;
+    color: black; 
+    margin: 30px auto;
+    width: 50%; /* Make the results section narrower */
+    font-size: 18px;
+}
+
+.results-container h3{
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Cluster-specific background colors */
+.cluster-0 { background-color: #ffd9b3;  } /* Cluster 0 - Pastel Red */
+.cluster-1 { background-color: #99ff99; } /* Cluster 1 - Pastel Green */
+.cluster-2 { background-color: #ffd9b3; } /* Cluster 2 - Bright Green */
+.cluster-3 { background-color: #ffd9b3; } /* Cluster 3 - Lighter Red */
+.cluster-4 { background-color: #99ff99;  } /* Cluster 4 - Pastel Orange */
+.cluster-5 { background-color: #99ff99; } /* Cluster 5 - Lighter Orange */
+.cluster-6 { background-color: #ffd9b3; } /* Cluster 6 - Light Green */
+.cluster-7 { background-color: #ffd9b3; } /* Cluster 7 - Warm Pastel Orange */
+.cluster-8 { background-color: #ff6666; } /* Cluster 8 - Deeper Red */
+
+#button-container {
+    display: flex;
+    justify-content: center;  /* Centers the button horizontally */
+    align-items: center;      /* Centers the button vertically (if the container has height) */
+    height: 5vh;            /* Optional: sets the height of the container to full viewport */
+    margin-bottom: 2vh;
+}
+
+#center-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/*Loading Screen*/
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent */
+    z-index: 1000; /* High z-index to cover everything */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#loading-overlay h3{
+    padding: 20px;
+    color: white;
+}
+/* The spinning wheel*/
+.spinner {
+    border: 16px solid #ffffff; /* Light gray */
+    border-top: 16px solid #10ffb3; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center; /* Center-align the image horizontally */
+    flex-direction: column;  /* Keep the image and caption stacked */
+    margin: 20px auto 20px auto;
+    background-color: white;
+    border-radius: 15px;       /* Smooth rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Add some shadow */
+    padding: 20px;
+    max-width: 40%;            /* Ensure responsive width */
+}
+
+/* Centering the chart image within the container */
+.chart-image {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
+    height: 40vh;
+    max-width: 600px;          /* Max width for the image */
+    border-radius: 10px;       /* Rounded corners */
+    object-fit: cover;         /* Ensure the image fits nicely */
+}
+
+.image-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 20px; /* Increase the gap for better spacing */
+    justify-items: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80vw; /* Set a max width to the grid */
+}
+
+/* Image item styling with larger size */
+.image-grid-item img {
+    width: 100%;
+    height: 30vh;
+    max-width: 30vw; /* Increase max width for larger images */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for emphasis */
+}
+.image-grid-item h3{
+    color: white;
+    text-align: center;
+}
+
+.chart-container h3{
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}

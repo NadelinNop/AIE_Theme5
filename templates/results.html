@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cluster Results</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div id="heading-container">
+        <h1>Cluster Prediction Results</h1>
+    </div>
+    <div class="received-input-container">
+        <h3> You entered the following:</h3>
+        <p><strong>Latency:</strong> {{latency}} ms<br> <strong>Total Bitrate:</strong> {{bitrate}} Mbps<br> <strong>Upload Bitrate:</strong> {{upload}} Mbps<br> <strong>Download Bitrate:</strong> {{download}} Mbps</p>
+    </div>
+    <div class="results-container cluster-{{ cluster }}"> <!-- Dynamic class based on cluster -->
+        <h3>We have determined you are in <strong>Cluster {{ cluster }}</strong></h3>
+        <p><strong>Description:</strong> {{ description }}</p>
+    </div>
+    <div id="button-container">
+        <a href="/"><button type="button" id="center-button">Enter New Data</button></a>
+    </div>
+    <div class="chart-container">
+        <h3>Scatter Plot Zones</h3>
+        <img src="data:image/jpg;base64,{{pca_image}}" alt="Generated Network Performance Charts" class="chart-image">
+        <img src="data:image/jpg;base64,{{latlong_image}}" alt="Generated Network Performance Charts" class="chart-image">
+    </div>
+    <div class="image-grid-container">
+        <!-- Display Latency Image -->
+        <div class="image-grid-item">
+            <h3>Latency Comparison (ms)</h3>
+            <img src="data:image/jpg;base64,{{latency_image}}" alt="Latency Comparison Chart" class="chart-image">
+        </div>
+    
+        <!-- Display Upload Bitrate Image -->
+        <div class="image-grid-item">
+            <h3>Upload Bitrate Comparison (Mbps)</h3>
+            <img src="data:image/jpg;base64,{{upload_image}}" alt="Upload Bitrate Comparison Chart" class="chart-image">
+        </div>
+    
+        <!-- Display Download Bitrate Image -->
+        <div class="image-grid-item">
+            <h3>Download Bitrate Comparison (Mbps)</h3>
+            <img src="data:image/jpg;base64,{{download_image}}" alt="Download Bitrate Comparison Chart" class="chart-image">
+        </div>
+    </div>
+    
+    <div id="label-container">
+        <h1>Performance Colour Map</h1>
+    </div>
+
+     <!-- Gradient legend -->
+    <div class="legend-container">
+        <div class="legend"></div>
+        <div class="legend-labels">
+            <span class="legend-label">Poor Performance</span>
+            <span class="legend-label">Good Performance</span>
+        </div>
+    </div>
+</body>
+
+</html>

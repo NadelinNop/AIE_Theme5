@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Network Data</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div id="heading-container">
+        <h1>Enter Network Performance Data</h1>
+    </div>
+    <div id="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+        <h3>Loading, please wait...</h3>
+    </div>
+    <div id="index-form-container">
+        <form id="prediction-form" action="/predict" method="post">
+            <input type="text" name="latency" placeholder="Enter Latency (ms)" required>
+            <!-- <input type="text" name="bitrate" placeholder="Enter Bitrate" required> -->
+            <input type="text" name="upload" placeholder="Upload Bitrate (Megabits/sec)" required>
+            <input type="text" name="download" placeholder="Download Bitrate (Megabits/sec)" required>
+            <input type="text" name="appdata" placeholder="Application Data Size (smaller than 3decimal)" required>
+            <button type="submit">Predict Cluster</button>
+        </form>
+    </div>
+
+    <!-- <a href="/dashboard"><button type="button">View Dashboard</button></a> -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <h2>Cluster 0</h2>
+            <p>Moderate speeds, suitable for light browsing and general use.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 60.08 ms<br>  <strong>Upload Bitrate:</strong> 10.50 Mbps<br> <strong>Download Bitrate:</strong> 22.00 Mbps</p>
+        </div>
+        <div class="grid-item">
+            <h2>Cluster 1</h2>
+            <p>Fast upload and download speeds, great for video streaming and frequent uploads.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 46.03 ms<br>  <strong>Upload Bitrate:</strong> 22.05 Mbps<br> <strong>Download Bitrate:</strong> 31.85 Mbps</p>
+        </div>
+        <div class="grid-item">
+            <h2>Cluster 2</h2>
+            <p>Stable, moderate speeds for everyday activities like browsing and streaming.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 896.65 ms<br> <strong>Upload Bitrate:</strong> 10.77 Mbps<br> <strong>Download Bitrate:</strong> 21.47 Mbps</p>
+        </div>
+        <div class="grid-item">
+            <h2>Cluster 3</h2>
+            <p>Consistent performance with some download speed fluctuations.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 41.56 ms<br>  <strong>Upload Bitrate:</strong> 21.51 Mbps<br> <strong>Download Bitrate:</strong> 11.14 Mbps</p>
+        </div>
+        <div class="grid-item">
+            <h2>Cluster 4</h2>
+            <p>Reliable uploads, slightly lower overall throughput, good for content sharing.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 104.81 ms<br> <strong>Upload Bitrate:</strong> 10.50 Mbps<br> <strong>Download Bitrate:</strong> 57.67 Mbps</p>
+        </div>
+        <div class="grid-item">
+            <h2>Cluster 5</h2>
+            <p>Best for heavy upload users, smooth downloads for most tasks.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 72.27 ms<br> <strong>Upload Bitrate:</strong> 10.49 Mbps<br> <strong>Download Bitrate:</strong> 36.60 Mbps</p>
+        </div>
+        <div class="grid-item">
+            <h2>Cluster 6</h2>
+            <p>Higher latency but strong network capacity for multiple devices.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 406.72 ms<br> <strong>Upload Bitrate:</strong> 10.44 Mbps<br> <strong>Download Bitrate:</strong> 17.26 Mbps</p>
+        </div>
+        <div class="grid-item">
+            <h2>Cluster 7</h2>
+            <p>Occasional speed fluctuations, reliable for daily online activities.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 64.10 ms<br> <strong>Upload Bitrate:</strong> 22.40 Mbps<br> <strong>Download Bitrate:</strong> 56.15 Mbps</p>
+        </div>
+        <div class="grid-item">
+            <h2>Cluster 8</h2>
+            <p>Lower speeds, ideal for basic tasks like web browsing and email.</p>
+            <h3>Average Speeds</h3>
+            <p><strong>Latency:</strong> 48.32 ms<br>  <strong>Upload Bitrate:</strong> 10.50 Mbps<br> <strong>Download Bitrate:</strong> 9.74 Mbps</p>
+        </div>
+    </div>
+<div id="label-container">
+    <h1>Performance Colour Map</h1>
+</div>
+    <!-- Gradient legend -->
+<div class="legend-container">
+    <div class="legend"></div>
+    <div class="legend-labels">
+        <span class="legend-label">Poor Performance</span>
+        <span class="legend-label">Good Performance</span>
+    </div>
+</div>
+
+<script>
+    document.getElementById('prediction-form').addEventListener('submit', function() {
+        // Show the spinner overlay when the form is submitted
+        document.getElementById('loading-overlay').style.display = 'flex';
+    });
+
+    window.addEventListener('load', function() {
+        // Hide the spinner when the page loads
+        document.getElementById('loading-overlay').style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
